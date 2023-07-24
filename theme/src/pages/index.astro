@@ -11,17 +11,18 @@ import {
 } from '@littlesticks/odyssey-theme-components';
 import Layout from '../layouts/Page.astro';
 import TextAndImageHero from '../components/sections/heros/TextAndImageHero.astro';
-
-
+import {sortPosts} from '../helper.js';
 
 const seo = {
     title: 'SketchMate | Sketch Your Day',
     description: 'SketchMate offers a simple, hassle-free sketching experience. Create, share and enjoy art daily without any sign-ups or registrations.',
 };
+
+const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(posts))
 ---
 
 
-<AnnouncementBar text="Read Our Latest Blog Post" href="/blog/posts/internal-testing"
+<AnnouncementBar text="Read Our Latest Blog Post" href={posts[0].url}
                  slot="announcement-bar"/>
 <Layout seo={seo}>
     <TextAndImageHero>
