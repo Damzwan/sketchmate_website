@@ -1,0 +1,47 @@
+---
+import {TextSection} from '@littlesticks/odyssey-theme-components';
+import Layout from '../layouts/Page.astro';
+import HeroSection from '../components/sections/heros/HeroSection.astro';
+
+const seo = {
+    title: 'About | SketchMate',
+    description: 'What is SketchMate about?',
+};
+---
+
+<Layout {seo}>
+    <HeroSection>
+        <div slot="text-container">
+            <h1>About</h1>
+            <p>
+                SketchMate began as a simple birthday present for my girlfriend. Its evolution into what it is today was
+                spurred by the realization that there was a gap in the market for a simple, user-friendly sketching and
+                sharing app.
+            </p>
+        </div>
+        <picture slot="image-container">
+            <img
+                    src="/assets/images/about.webp"
+                    alt="Astro Odyssee"
+                    id="home-hero-image"
+            />
+        </picture>
+    </HeroSection>
+    <TextSection narrow>
+        <h1>What is SketchMate?</h1>
+        <p>
+            SketchMate makes sketching a part of your daily routine. It allows for quick doodles, detailed drawings, or
+            visual notes, all saved in a simple, personal gallery. But it isn't just about drawing, it's also about
+            sharing those drawings. This app provides a unique way to stay connected with friends, by bringing a bit of
+            creativity into your everyday life.
+        </p>
+        <p>
+        </p>
+        <p>
+            There's no fuss over account creation or registration, just download SketchMate or use the web version and
+            start sketching. The basic functional design is a feature (not a lack of my UI design talent) and keeps the focus
+            on creativity and sharing, not on navigating complicated interfaces.
+        </p>
+
+    </TextSection>
+</Layout>

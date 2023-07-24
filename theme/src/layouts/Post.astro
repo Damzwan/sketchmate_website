@@ -1,7 +1,11 @@
 ---
-import { Container } from '@littlesticks/odyssey-theme-components';
+import {
+  Container,
+  TextCardSection,
+} from '@littlesticks/odyssey-theme-components';
 import Layout from './Page.astro'; 
 import { generateTagData } from '../utils/helpers';
+import NewsletterForm from '../components/forms/NewsletterForm.astro';
 
 const {content: {title, description, publishDate, canonicalURL, featuredImage, tags} } = Astro.props;
 
@@ -40,6 +44,15 @@ const seo = {
     <article id="article">
         <slot></slot>
     </article>
+
+    <TextCardSection>
+      <h1>SketchMate Blog</h1>
+      <p>
+        Stay updated with the latest news, feature releases, and tech insights about SketchMate.
+        Want to be the first to hear about a new blog post? Join our newsletter!
+      </p>
+      <NewsletterForm/>
+    </TextCardSection>
   </Container>
 </Layout>
 

@@ -1,0 +1,62 @@
+---
+import ContactForm from '../components/forms/ContactForm.astro';
+import Layout from '../layouts/Page.astro';
+import {Container} from '@littlesticks/odyssey-theme-components';
+
+const seo = {
+    title: 'Contact | SketchMate',
+    description: 'Get in touch with SketchMate. We value your feedback and are here to assist with any queries or support you might need.',
+};
+---
+
+<Layout seo={seo}>
+    <Container>
+        <section class="contact-hero__section">
+            <div class="contact-hero__text-section">
+                <h1>Contact Me</h1>
+                <p>
+                    Do you have any questions or problems using the app? Reach out to me, I'll try to respond as fast as
+                    possible!
+                </p>
+                <div>
+                    <p>
+                        • <em><a href="mailto:damian.vlaicu@gmail.com">damian.vlaicu@gmail.com</a
+                    ></em
+                    >
+                    </p>
+                </div>
+            </div>
+        </section>
+    </Container>
+</Layout>
+
+<style>
+    .contact-hero__section {
+        margin: var(--section-margin) auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: calc(90vh - var(--navbar-height));
+        gap: 3rem;
+    }
+
+    .contact-hero__text-section {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: var(--theme-surface-1);
+        border-radius: var(--theme-shape-radius);
+    }
+
+    .col-2__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        .contact-hero__section {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

@@ -1,42 +1,29 @@
 export const footerSocials = [
-  {
-    name: 'Twitter',
-    url: 'https://twitter.com/littlesticksdev',
-    icon: "mdi:twitter",
-  },
-  {
-    name: 'Youtube',
-    url: 'https://youtube.com/c/LittleSticks',
-    icon: "mdi:youtube",
-  },
-  {
-    name: 'Github',
-    url: 'https://github.com/littlesticks',
-    icon: "mdi:github",
-  },
-  {
-    name: 'Discord',
-    url: 'https://littlesticks.dev/discord',
-    icon: "ic:baseline-discord",
-  },
+	{
+		name: 'Github',
+		url: 'https://github.com/Damzwan/sketchmate',
+		icon: "mdi:github",
+	},
+	{
+		name: 'Discord',
+		url: 'https://discord.gg/aj842bfh',
+		icon: "ic:baseline-discord",
+	},
+	{
+		name: 'Linkedin',
+		url: 'https://www.linkedin.com/in/damian-vlaicu-021564194/',
+		icon: "mdi:linkedin",
+	},
 ]
 
 export const footerLists = [
 	{
-		title: 'Landing Pages',
+		title: 'Home',
 		items: [
 			{
-				title: 'Landing Page 1',
-				slug: '/landing-pages/landing-1',
+				title: 'Home',
+				slug: '/',
 			},
-			{
-				title: 'Landing Page 2',
-				slug: '/landing-pages/landing-2',
-			},
-      // {
-			// 	title: 'Landing Page 3',
-			// 	slug: '/landing-pages/landing-3',
-			// },
 		],
 	},
 	{
@@ -44,7 +31,7 @@ export const footerLists = [
 		items: [
 			{
 				title: 'About',
-				slug: '/company/about',
+				slug: '/about',
 			},
 			{
 				title: 'Blog',
@@ -52,29 +39,9 @@ export const footerLists = [
 			},
 			{
 				title: 'Contact',
-				slug: '/company/contact',
+				slug: '/contact',
 			},
 		],
 	},
-	{
-		title: 'Theme',
-		items: [
-			{
-				title: 'Get Started',
-				slug: '/theme/get-started',
-			},
-			{
-				title: 'Style Guide',
-				slug: '/theme/style-guide',
-			},
-      {
-        title: 'Theme Setup',
-        slug: '/theme/theme-setup',
-      },
-      {
-        title: 'Customizing Odyssey',
-        slug: '/theme/customizing-odyssey',
-      }
-		],
-	},
+
 ];

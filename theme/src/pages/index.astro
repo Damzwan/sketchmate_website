@@ -1,92 +1,170 @@
 ---
-import { Container, FeatureCard } from '@littlesticks/odyssey-theme-components';
-
+import {Icon} from 'astro-icon'
+import {
+    AnnouncementBar,
+    Button,
+    CustomerQuoteSection,
+    ThreeColumnTextSection,
+    YouTubeEmbedSection,
+    StickyTextImageSection,
+    CtaCardSection
+} from '@littlesticks/odyssey-theme-components';
 import Layout from '../layouts/Page.astro';
-import HomeHeroSection from '../components/sections/heros/HomeHeroSection.astro';
+import TextAndImageHero from '../components/sections/heros/TextAndImageHero.astro';
+
+
+
+const seo = {
+    title: 'SketchMate | Sketch Your Day',
+    description: 'SketchMate offers a simple, hassle-free sketching experience. Create, share and enjoy art daily without any sign-ups or registrations.',
+};
 ---
 
-<Layout>
-	<HomeHeroSection />
-	<Container>
-		<section class="feature-card__section">
-			<h2>Landing Pages</h2>
-			<p>
-				Use one of our landing pages to jumpstart your website or
-				ad campaign.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/landing-pages/landing-1" title="Landing Page 1" imgSrc="/assets/images/home/screenshots/landing-1">
-				</FeatureCard>
-				<FeatureCard href="/landing-pages/landing-2" title="Landing Page 2" imgSrc="/assets/images/home/screenshots/landing-2">
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Company Pages</h2>
-			<p>
-				Use one of our prebuilt company pages for your about page, contact page,
-				legal pages, blog posts, etc.
-			</p>
-			<div class="feature-card__grid">
-				<FeatureCard href="/company/about" title="About Page" imgSrc="/assets/images/home/screenshots/about">
-				</FeatureCard>
-				<FeatureCard href="/company/contact" title="Contact Page" imgSrc="/assets/images/home/screenshots/contact">
-				</FeatureCard>
-				<FeatureCard href="/blog/" title="Blog Page" imgSrc="/assets/images/home/screenshots/blog">
-				</FeatureCard>
-				<FeatureCard
-					href="/blog/posts/remote-work-mental-health"
-					title="Blog Post"
-          imgSrc="/assets/images/home/screenshots/blog-post"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/company/legal"
-					imgSrc="/assets/images/home/screenshots/legal"
-					title="Legal Page"
-				>
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+<AnnouncementBar text="Read Our Latest Blog Post" href="/blog/posts/remote-work-mental-health/"
+                 slot="announcement-bar"/>
+<Layout seo={seo}>
+    <TextAndImageHero>
 
-	<Container>
-		<section class="feature-card__section">
-			<h2>Theme Pages</h2>
-			<p>Learn more about how to set up and use the Odyssey Theme.</p>
-			<div class="feature-card__grid">
-				<FeatureCard
-					href="/theme/get-started"
-					imgSrc="/assets/images/home/screenshots/get-started"
-					title="Get Started"
-				>
-				</FeatureCard>
-				<FeatureCard
-					href="/theme/style-guide"
-					imgSrc="/assets/images/home/screenshots/style-guide"
-					title="Style Guide"
-				>
-				</FeatureCard>
-			</div>
-		</section>
-	</Container>
+        <div slot="text-container" id="text-container">
+            <h1 id="text-heading">SketchMate</h1>
+            <p id="text-description">Capture your day in a sketch, and share your creativity with a friend. No hassle,
+                just fun.</p>
+        </div>
+        <div slot="btns-container">
+            <Button href="/theme/get-started" customIcon
+            >Start Sketching
+                <Fragment slot="icon">
+                    <Icon name="ic:baseline-chevron-right"/>
+                </Fragment>
+            </Button
+            >
+        </div>
+        <picture slot="image-container">
+            <img
+                    src="/assets/images/landing/landing_1.webp"
+                    alt="Astro Odyssee"
+                    style="object-fit: contain;height: auto; margin: auto; width:60%"
+            />
+        </picture>
+    </TextAndImageHero>
+
+    <CustomerQuoteSection
+            quoteText="SketchMate has become my daily pause for creativity. It's simple, personal, and I love sharing sketches with my significant other. It's transformed how I see my day."
+            customerName="Hopefully someone"
+    />
+
+
+    <ThreeColumnTextSection>
+        <div slot="column-1-body" data-aos="slide-up" data-aos-anchor-placement="top-center">
+            <h3>Connect with a friend</h3>
+            <picture slot="image-container" style="display: flex; justify-content: center;">
+                <img
+                        src="/assets/images/landing/landing_2.webp"
+                        alt="Astro Odyssee"
+                        style="object-fit: contain; width: 70%; height: auto; margin: auto;"
+                />
+            </picture>
+
+        </div>
+        <div slot="column-2-body" data-aos="slide-up" data-aos-anchor-placement="top-center">
+            <h3>Send Sketches</h3>
+            <picture slot="image-container" style="display: flex; justify-content: center;">
+                <img
+                        src="/assets/images/landing/landing_3.webp"
+                        alt="Astro Odyssee"
+                        style="object-fit: contain; width: 70%; height: auto; margin: auto;"
+                />
+            </picture>
+        </div>
+        <div slot="column-3-body" data-aos="slide-right" data-aos-anchor-placement="top-center">
+            <h3>Rediscover Your Art</h3>
+            <picture slot="image-container" style="display: flex; justify-content: center;">
+                <img
+                        src="/assets/images/landing/landing_4.webp"
+                        alt="Astro Odyssee"
+                        style="object-fit: contain; width: 70%; height: auto; margin: auto;"
+                />
+            </picture>
+        </div>
+    </ThreeColumnTextSection>
+
+    <StickyTextImageSection>
+        <div slot="text-container">
+            <h2>Features</h2>
+            <h3>Start Sketching Immediately</h3>
+            <p>
+                Download SketchMate and start sketching right away. No account needed, no strings attached. Just pure
+                creativity from the first moment.
+            </p>
+            <h3>Tools to Express Yourself</h3>
+            <p>
+                Choose from various brushes, shapes, and stickers to bring your ideas to life. Incorporate text, use
+                emblems, or add images. Save your favorite characters for quick access.
+            </p>
+            <h3>Minimalist Design</h3>
+            <p>
+                SketchMate sports a clean, intuitive design that keeps the focus on your creativity. Your sketches are
+                organized in a simple gallery, ready to be revisited and shared.
+            </p>
+            <h3>Free and open source</h3>
+            <p>
+                SketchMate is entirely free and open source. Express yourself, share your creativity, and stay connected
+                with your friends without any barriers.
+            </p>
+        </div>
+        <picture slot="image-container" style="display: flex; justify-content: center;" data-aos="zoom-in"
+                 data-aos-anchor-placement="top-center">
+            <img
+                    class="responsive-img"
+                    src="/assets/images/landing/landing_5.webp"
+                    alt="Astro Odyssee"
+                    style="object-fit: contain; height: auto; margin: auto; width:60%"
+            />
+        </picture>
+
+
+    </StickyTextImageSection>
+
+
+    <TextAndImageHero reversed>
+        <div slot="text-container">
+            <h1>Stay Connected</h1>
+            <p>View your friend's latest sketch straight from your widget, brightening your day with art.</p>
+        </div>
+
+        <picture slot="image-container" style="display: flex; justify-content: center;">
+            <img
+                    class="responsive-img"
+                    src="/assets/images/landing/landing_6.webp"
+                    alt="Astro Odyssee"
+                    style="object-fit: contain; height: auto; margin: auto; width:50%"
+            />
+        </picture>
+    </TextAndImageHero>
+
+
+    <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
+        <h2>Ready to Unleash Your Creativity?</h2>
+        <p>Begin your sketching journey now...</p>
+        <Button href="/theme/get-started" customIcon>Start Sketching
+            <Fragment slot="icon">
+                <Icon name="ic:baseline-chevron-right"/>
+            </Fragment>
+        </Button>
+    </CtaCardSection>
+
+
 </Layout>
 
+
 <style>
-	.feature-card__section {
-		margin: var(--section-margin) auto;
-	}
-	.feature-card__grid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--theme-grid-gap);
-	}
-	@media (max-width: 768px) {
-		.feature-card__grid {
-			grid-template-columns: 1fr;
-		}
-	}
+    @media only screen and (max-width: 800px) {
+        .responsive-img {
+            width: 90% !important;
+        }
+
+    }
+
+
 </style>
