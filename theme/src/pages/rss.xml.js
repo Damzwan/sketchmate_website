@@ -1,12 +1,17 @@
-import rss, {pagesGlobToRssItems} from '@astrojs/rss';
+import rss from '@astrojs/rss';
 import settings from '../config/settings';
 
-
-export async function get(context) {
+export function get(context) {
+    const postImportResult = import.meta.glob('./blog/posts/*.{md,mdx}', {eager: true});
+    const posts = Object.values(postImportResult);
     return rss({
         title: settings.title,
         description: settings.description,
         site: context.site,
-        items: import.meta.glob('./blog/posts/*.{md,mdx}'),
+        items: posts.map((post) => ({
+            link: post.url,
+            content: `<img src="${context.site}${post.frontmatter.heroImage}" alt="${post.frontmatter.title}"/>`,
+            ...post.frontmatter,
+        })),
     });
 }

@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^2.4.3",
-    "aos": "^2.3.4"
+    "aos": "^2.3.4",
+    "sanitize-html": "^2.11.0"
   }
 }
