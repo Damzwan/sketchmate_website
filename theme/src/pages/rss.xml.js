@@ -10,7 +10,7 @@ export function get(context) {
         site: context.site,
         items: posts.map((post) => ({
             link: post.url,
-            content: `<img src="${context.site}${post.frontmatter.heroImage}" alt="${post.frontmatter.title}"/>`,
+            content: `<img src="${context.site}${post.frontmatter.featuredImage}" alt="${post.frontmatter.title}"/>`,
             ...post.frontmatter,
         })),
     });
