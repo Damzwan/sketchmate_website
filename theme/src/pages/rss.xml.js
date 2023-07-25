@@ -12,9 +12,12 @@ export function get(context) {
         site: context.site,
         items: posts.map((post) => ({
             link: post.url,
-            customData: `<media medium="image" url="${siteUrl}${post.frontmatter.featuredImage}"/>`,
+            customData: `<media:content medium="image" url="${siteUrl}${post.frontmatter.featuredImage}" width="500" height="300"/>`,
             ...post.frontmatter,
         })),
+        xmlns: {
+            media: 'https://search.yahoo.com/mrss/'
+        }
     });
 }
 
