@@ -12,7 +12,7 @@ export function get(context) {
         site: context.site,
         items: posts.map((post) => ({
             link: post.url,
-            customData: `<media:content medium="image" url="${siteUrl}${post.frontmatter.featuredImage}" width="500" height="300"/>`,
+            customData: `<media:content type="image/webp" url="${siteUrl}${post.frontmatter.featuredImage}" width="500" height="300"/>`,
             ...post.frontmatter,
         })),
         xmlns: {
