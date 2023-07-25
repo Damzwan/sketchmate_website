@@ -41,6 +41,10 @@ export const footerLists = [
 				title: 'Contact',
 				slug: '/contact',
 			},
+			{
+				title: 'Legal',
+				slug: '/legal',
+			},
 		],
 	},
 

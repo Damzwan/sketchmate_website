@@ -11,9 +11,10 @@ export function get(context) {
         description: settings.description,
         site: context.site,
         items: posts.map((post) => ({
-            link: post.url,
-            customData: `<media:content type="image/webp" url="${siteUrl}${post.frontmatter.featuredImage}" width="500" height="300"/>`,
             ...post.frontmatter,
+            link: post.url,
+            categories: post.frontmatter.tags,
+            customData: `<media:content type="image/webp" url="${siteUrl}${post.frontmatter.featuredImage}" width="500" height="300"/>`,
         })),
         xmlns: {
             media: 'http://search.yahoo.com/mrss/'

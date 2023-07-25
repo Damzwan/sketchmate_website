@@ -3,11 +3,11 @@ import {
   Container,
   TextCardSection,
 } from '@littlesticks/odyssey-theme-components';
-import Layout from './Page.astro'; 
+import Layout from './Page.astro';
 import { generateTagData } from '../utils/helpers';
 import NewsletterForm from '../components/forms/NewsletterForm.astro';
 
-const {content: {title, description, publishDate, canonicalURL, featuredImage, tags} } = Astro.props;
+const {content: {title, description, pubDate, canonicalURL, featuredImage, tags} } = Astro.props;
 
 let allTagsData = [];
 
@@ -18,13 +18,13 @@ if(tags && tags.length > 0){
 const seo = {
 	title,
 	description,
-  publishDate,
+    publishDate: pubDate,
 	canonicalURL,
 	image: featuredImage,
 };
 ---
-<Layout seo={seo}> 
-  <div class="post-header__container"> 
+<Layout seo={seo}>
+  <div class="post-header__container">
     <ul class="post-tags__list">
       {allTagsData.map(tag => (
         <li class="post-tags__tag">
@@ -36,16 +36,16 @@ const seo = {
     </ul>
     <h1>{title}</h1>
     <p class="post-layout__date">
-      <time><em>{publishDate}</em></time>
+      <time><em>{pubDate}</em></time>
     </p>
     {featuredImage && <img class="post-layout__img" src={featuredImage} alt={title} />}
   </div>
-  <Container narrow>  
+  <Container narrow>
     <article id="article">
         <slot></slot>
     </article>
 
-    <div class="ml-embedded" data-form="V6Bop1"></div>
+    <div class="ml-embedded" style="padding-bottom: 2rem" data-form="V6Bop1"></div>
   </Container>
 </Layout>
 

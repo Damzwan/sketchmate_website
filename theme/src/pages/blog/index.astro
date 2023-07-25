@@ -3,8 +3,8 @@ import {parse, isBefore} from 'date-fns';
 import {
     Container,
     TextCardSection,
-    BlogPostsList,
 } from '@littlesticks/odyssey-theme-components';
+import BlogPostsList from '../../components/blog/BlogPostsList.astro'
 import Layout from '../../layouts/Page.astro';
 import NewsletterForm from '../../components/forms/NewsletterForm.astro';
 
@@ -16,6 +16,7 @@ const posts = await Astro.glob('./posts/*.mdx').then(posts =>
             authors: frontmatter.authors,
             publishDate: parse(frontmatter.pubDate, 'MMMM d, yyyy', new Date()),
             featuredImage: frontmatter.featuredImage,
+            tags: frontmatter.tags,
             excerpt: frontmatter.excerpt,
             href: url,
         }))
@@ -35,9 +36,12 @@ const seo = {
 <Layout {seo}>
     <Container>
         <section class="blog-posts-list__section">
-            <div class="ml-embedded" data-form="V6Bop1"></div>
-            <h2>Recent Posts</h2>
+            <div class="flex-container">
+                <h3 style="margin: 0">Recent Posts</h3>
+                <div class="ml-embedded" data-form="l1K7rP"></div>
+            </div>
             <BlogPostsList posts={posts}/>
+            <div class="ml-embedded" style="padding-top: 2rem" data-form="V6Bop1"></div>
         </section>
     </Container>
 </Layout>
@@ -46,4 +50,20 @@ const seo = {
     .blog-posts-list__section {
         margin: var(--section-margin) auto;
     }
+
+    .flex-container {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    @media (min-width: 768px) {
+        .flex-container {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+
+
 </style>
