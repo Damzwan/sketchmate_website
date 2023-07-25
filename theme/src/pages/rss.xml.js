@@ -16,8 +16,8 @@ export function get(context) {
             ...post.frontmatter,
         })),
         xmlns: {
-            media: 'https://search.yahoo.com/mrss/'
-        }
+            media: 'http://search.yahoo.com/mrss/'
+        },
     });
 }
 
