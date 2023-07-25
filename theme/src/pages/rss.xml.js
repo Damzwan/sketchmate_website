@@ -12,7 +12,7 @@ export function get(context) {
         site: context.site,
         items: posts.map((post) => ({
             link: post.url,
-            content: `<img src="${siteUrl}${post.frontmatter.featuredImage}" alt="${post.frontmatter.title}" style="max-width:540px; height:auto;"/>`,
+            content: `<img src="${siteUrl}${post.frontmatter.featuredImage}" alt="Image found" style="max-width:540px; height:auto;"/>`,
             ...post.frontmatter,
         })),
     });
