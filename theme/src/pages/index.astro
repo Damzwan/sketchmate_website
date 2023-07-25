@@ -21,10 +21,9 @@ const seo = {
 const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(posts))
 ---
 
-
-<AnnouncementBar text="Read Our Latest Blog Post" href={posts[0].url}
-                 slot="announcement-bar"/>
 <Layout seo={seo}>
+    <AnnouncementBar text="Read Our Latest Blog Post" href={posts[0].url}
+                     slot="announcement-bar"/>
     <TextAndImageHero>
 
         <div slot="text-container" id="text-container">

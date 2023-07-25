@@ -2,7 +2,7 @@
 import settings from '../../config/settings.js';
 import ThemeProvider from '../theme-switcher/ThemeProvider.astro';
 
-import '../../../public/styles/index.css';
+import '../../styles/index.css';
 
 export interface Props {
 	title?: string;
@@ -41,14 +41,3 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={image} />
-
-<!-- For Demonstration of the themes -->
-{settings.enableThemeSwitcher && <ThemeProvider />}
-
-<!-- Google Analytics -->
-<script>
-  var host = window.location.hostname;
-  if(host != 'localhost') {
-    // Place Google Analytics code here.
-  }
-</script>
