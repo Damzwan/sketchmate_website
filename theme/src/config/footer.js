@@ -14,6 +14,11 @@ export const footerSocials = [
 		url: 'https://www.linkedin.com/in/damian-vlaicu-021564194/',
 		icon: "mdi:linkedin",
 	},
+	{
+		name: 'mail',
+		url: 'mailto:damian.vlaicu@gmail.com',
+		icon: "mdi:email",
+	},
 ]
 
 export const footerLists = [
