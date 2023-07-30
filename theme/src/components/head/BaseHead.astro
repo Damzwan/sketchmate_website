@@ -28,19 +28,7 @@ const image = new URL(Astro.props.image || './social.png', Astro.site);
 <link rel="canonical" href={canonicalURL}/>
 <!-- Generator -->
 <meta name="generator" content={Astro.generator}/>
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website"/>
-<meta property="og:url" content={canonicalURL}/>
-<meta property="og:title" content={title}/>
-<meta property="og:description" content={description}/>
-<meta property="og:image" content={image}/>
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image"/>
-<meta property="twitter:url" content={canonicalURL}/>
-<meta property="twitter:title" content={title}/>
-<meta property="twitter:description" content={description}/>
-<meta property="twitter:image" content={image}/>
+<meta name="google-site-verification" content="qbyxHK9Z3u3CCt-3vKyH4nvFgl-_VR9tnqVKX9yZkoA" />
 
 <script>
     var host = window.location.hostname;
