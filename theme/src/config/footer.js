@@ -6,7 +6,7 @@ export const footerSocials = [
 	},
 	{
 		name: 'Discord',
-		url: 'https://discord.gg/aj842bfh',
+		url: 'https://discord.gg/EvDa9E5A6r',
 		icon: "ic:baseline-discord",
 	},
 	{
@@ -16,7 +16,7 @@ export const footerSocials = [
 	},
 	{
 		name: 'mail',
-		url: 'mailto:damian.vlaicu@gmail.com',
+		url: 'mailto:news@sketchmate.ninja',
 		icon: "mdi:email",
 	},
 ]
