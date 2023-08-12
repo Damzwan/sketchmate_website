@@ -55,39 +55,41 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
     />
 
 
-    <ThreeColumnTextSection>
-        <div slot="column-1-body" data-aos="slide-up" data-aos-anchor-placement="top-center">
-            <h3>Connect with a friend</h3>
-            <picture slot="image-container" style="display: flex; justify-content: center;">
-                <img
-                        src="/assets/images/landing/landing_2.webp"
-                        alt="SketchMate 2"
-                        style="object-fit: contain; width: 70%; height: auto; margin: auto;"
-                />
-            </picture>
+    <div style="overflow-x: hidden">
+        <ThreeColumnTextSection>
+            <div slot="column-1-body" data-aos="fade-left" data-aos-anchor-placement="top-center">
+                <h3>Connect with a friend</h3>
+                <picture slot="image-container" style="display: flex; justify-content: center;">
+                    <img
+                            src="/assets/images/landing/landing_2.webp"
+                            alt="SketchMate 2"
+                            style="object-fit: contain; width: 60%; height: auto; margin: auto;"
+                    />
+                </picture>
 
-        </div>
-        <div slot="column-2-body" data-aos="slide-up" data-aos-anchor-placement="top-center">
-            <h3>Send Sketches</h3>
-            <picture slot="image-container" style="display: flex; justify-content: center;">
-                <img
-                        src="/assets/images/landing/landing_3.webp"
-                        alt="SketchMate 3"
-                        style="object-fit: contain; width: 70%; height: auto; margin: auto;"
-                />
-            </picture>
-        </div>
-        <div slot="column-3-body" data-aos="fade-right" data-aos-anchor-placement="top-center">
-            <h3>Rediscover Your Art</h3>
-            <picture slot="image-container" style="display: flex; justify-content: center;">
-                <img
-                        src="/assets/images/landing/landing_4.webp"
-                        alt="SketchMate 4"
-                        style="object-fit: contain; width: 70%; height: auto; margin: auto;"
-                />
-            </picture>
-        </div>
-    </ThreeColumnTextSection>
+            </div>
+            <div slot="column-2-body" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                <h3>Send Sketches</h3>
+                <picture slot="image-container" style="display: flex; justify-content: center;">
+                    <img
+                            src="/assets/images/landing/landing_3.webp"
+                            alt="SketchMate 3"
+                            style="object-fit: contain; width: 60%; height: auto; margin: auto;"
+                    />
+                </picture>
+            </div>
+            <div slot="column-3-body" data-aos="fade-right" data-aos-anchor-placement="top-center">
+                <h3>Rediscover Your Art</h3>
+                <picture slot="image-container" style="display: flex; justify-content: center;">
+                    <img
+                            src="/assets/images/landing/landing_4.webp"
+                            alt="SketchMate 4"
+                            style="object-fit: contain; width: 60%; height: auto; margin: auto;"
+                    />
+                </picture>
+            </div>
+        </ThreeColumnTextSection>
+    </div>
 
     <StickyTextImageSection>
         <div slot="text-container">
@@ -119,7 +121,7 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
                     class="responsive-img"
                     src="/assets/images/landing/landing_5.webp"
                     alt="SketchMate 5"
-                    style="object-fit: contain; height: auto; margin: auto; width:60%"
+                    style="object-fit: contain; height: auto; margin: auto; width:50%"
             />
         </picture>
 
@@ -138,7 +140,7 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
                     class="responsive-img"
                     src="/assets/images/landing/landing_6.webp"
                     alt="SketchMate 6"
-                    style="object-fit: contain; height: auto; margin: auto; width:50%"
+                    style="object-fit: contain; height: auto; margin: auto; width:40%"
             />
         </picture>
     </TextAndImageHero>
@@ -161,10 +163,8 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
 <style>
     @media only screen and (max-width: 800px) {
         .responsive-img {
-            width: 90% !important;
+            width: 70% !important;
         }
 
     }
-
-
 </style>
