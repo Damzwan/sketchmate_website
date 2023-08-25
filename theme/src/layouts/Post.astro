@@ -52,6 +52,7 @@ const seo = {
 <style>
   #article {
     padding-bottom: 3rem;
+    font-size: 1.15rem;
   }
   .post-header__container {
     max-width: var(--theme-blog-post-header-width);
@@ -62,6 +63,9 @@ const seo = {
     margin: 1rem auto;
     padding: 0;
     list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* This is to ensure the tags wrap to the next line if there's not enough space */
+    gap: 10px; /* Spacing between tags */
   }
   .post-tags__tag {
     text-transform: uppercase;

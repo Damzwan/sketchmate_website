@@ -22,14 +22,13 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
 ---
 
 <Layout seo={seo}>
-    <AnnouncementBar text="Read Our Latest Blog Post" href={posts[0].url}
+    <AnnouncementBar text="Read our latest blog post" href={posts[0].url}
                      slot="announcement-bar"/>
     <TextAndImageHero>
 
         <div slot="text-container" id="text-container">
             <h1 id="text-heading">SketchMate</h1>
-            <p id="text-description">Capture your day in a sketch, and share your creativity with a friend. No hassle,
-                just fun.</p>
+            <p id="text-description">Sketch your day and share the creativity with a friend. No hassle, just fun.</p>
         </div>
         <div slot="btns-container">
             <Button href="https://app.sketchmate.ninja" customIcon
@@ -67,9 +66,9 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
                     />
                 </picture>
 
-            </div>
+            </div>top
             <div slot="column-2-body" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                <h3>Send Sketches</h3>
+                <h3>Send sketches</h3>
                 <picture slot="image-container" style="display: flex; justify-content: center;">
                     <img
                             src="/assets/images/landing/landing_3.webp"
@@ -79,7 +78,7 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
                 </picture>
             </div>
             <div slot="column-3-body" data-aos="fade-right" data-aos-anchor-placement="top-center">
-                <h3>Rediscover Your Art</h3>
+                <h3>Rediscover your art</h3>
                 <picture slot="image-container" style="display: flex; justify-content: center;">
                     <img
                             src="/assets/images/landing/landing_4.webp"
@@ -94,24 +93,24 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
     <StickyTextImageSection>
         <div slot="text-container">
             <h2>Features</h2>
-            <h3>Start Sketching Immediately</h3>
+            <h3>Start sketching immediately</h3>
             <p>
                 Download SketchMate and start sketching right away. No account needed, no strings attached. Just pure
                 creativity from the first moment.
             </p>
-            <h3>Tools to Express Yourself</h3>
+            <h3>Tools to express yourself</h3>
             <p>
                 Choose from various brushes, shapes, and stickers to bring your ideas to life. Incorporate text, use
                 emblems, or add images. Save your favorite characters for quick access.
             </p>
-            <h3>Minimalist Design</h3>
+            <h3>Minimalist design</h3>
             <p>
                 SketchMate sports a clean, intuitive design that keeps the focus on your creativity. Your sketches are
                 organized in a simple gallery, ready to be revisited and shared.
             </p>
-            <h3>Free and open source</h3>
+            <h3>Free and Open Source</h3>
             <p>
-                SketchMate is entirely free and open source. Express yourself, share your creativity, and stay connected
+                SketchMate is entirely free with no ads and Open Source. Express yourself, share your creativity, and stay connected
                 with your friends without any barriers.
             </p>
         </div>
@@ -131,7 +130,7 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
 
     <TextAndImageHero reversed>
         <div slot="text-container">
-            <h1>Stay Connected</h1>
+            <h1>Stay connected</h1>
             <p>View your friend's latest sketch straight from your widget, brightening your day with art.</p>
         </div>
 
@@ -147,7 +146,7 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
 
 
     <CtaCardSection background="var(--theme-surface-2)" color="var(--theme-on-surface-2)">
-        <h2>Ready to Unleash Your Creativity?</h2>
+        <h2>Ready to unleash Your creativity?</h2>
         <p>Begin your sketching journey now...</p>
         <Button href="https://app.sketchmate.ninja" customIcon>Start Sketching
             <Fragment slot="icon">

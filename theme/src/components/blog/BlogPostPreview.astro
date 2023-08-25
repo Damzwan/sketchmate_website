@@ -1,12 +1,26 @@
 ---
+import {format} from 'date-fns';
 const {post} = Astro.props;
+
+const date = new Date(post.publishDate)
+const tags = post.tags
+const tagsString = tags.join(' | ');
 ---
 
 <li class="blog-post__preview">
     <a href={post.href}>
         <img class="blog-post__image" src={post.featuredImage} alt={post.title}/>
         <h3>{post.title}</h3>
-        {post.excerpt && <p>{post.excerpt}</p>}
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+            <time><em>{format(date, 'MMMM d, yyyy')}</em></time>
+            {tagsString && (
+                    <>
+                        <span style={{ margin: '0 5px' }}>|</span>
+                        <span>{tagsString}</span>
+                    </>
+            )}
+        </div>
+
     </a>
 </li>
 
@@ -17,6 +31,7 @@ const {post} = Astro.props;
         border-radius: calc(var(--theme-shape-radius) / 2);
         transition: border-radius var(--theme-transition);
     }
+
     .blog-post__image {
         display: block;
         margin-left: auto;
