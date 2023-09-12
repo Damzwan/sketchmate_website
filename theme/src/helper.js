@@ -1,3 +1,5 @@
+import {isBefore} from "date-fns";
+
 export async function sortPosts(posts) {
     posts.sort((a, b) => {
         if (isBefore(a.publishDate, b.publishDate)) return 1;

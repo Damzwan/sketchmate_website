@@ -1,0 +1,215 @@
+---
+layout: '../../../layouts/Post.astro'
+title: "Add mobile gestures in Fabric.js"
+description: "Learn how to effortlessly implement mobile-friendly gestures like pinch-to-zoom, drag-to-pan, and object rotation in Fabric.js."
+pubDate: September 12, 2023
+featuredImage: '/assets/images/blog/pinch.svg'
+excerpt: 'Explore a step-by-step guide to adding seamless mobile gestures like pinch-to-zoom and drag-to-pan in Fabric.js.'
+tags: ['Development']
+---
+
+## Introduction
+
+Welcome to our inaugural development blog post! Today, we're diving deep into how you can seamlessly implement mobile gestures, such as pinch-to-zoom and drag-to-pan, in Fabric.js. While developing this feature for SketchMate, we faced some challenges, and we hope that sharing our experiences can make your journey easier.
+
+Experience these features firsthand on the [SketchMate Web App](https://app.sketchmate.ninja/draw?trial=true)—just make sure you're on a mobile device!
+
+<div style={{display: 'flex', justifyContent: 'center', paddingBottom: "20px"}}>
+    <iframe
+        width="315"
+        height="560"
+        src="https://www.youtube.com/embed/280MpUsnaeo"
+        title="YouTube video player"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+    ></iframe>
+</div>
+
+## Overview of Our Strategy
+
+Our approach to gesture detection hinges on several key events, namely:
+
+- **Gesture Start**: Initialize the canvas for incoming gestures.
+- **Zoom**: Handle both canvas zooming and object scaling.
+- **Rotate**: Deal with object rotation.
+- **Drag**: Manage canvas panning.
+- **Gesture End**: Revert changes initialized during the "Gesture Start".
+
+We opted for a [custom implementation](https://github.com/Damzwan/sketchmate/blob/develop/src/utils/gestureDetector.ts) for maximum customization. The full code is available on our [Github repository](https://github.com/Damzwan/sketchmate/), although any
+event detection library can be used such as [HammerJS](https://hammerjs.github.io/) or [AlloyFinger](https://github.com/AlloyTeam/AlloyFinger).
+
+<b>Note</b>: For simplicity's sake we will trim down the code we use in production.
+
+### Gesture Start
+
+```js
+onGestureStart: () => {
+      canvas = // init fabric.js canvas
+      // Rotation or scale gestures
+      if (selectedTool.value == DrawTool.Select) {
+        const obj = canvas.getActiveObject()
+        obj.set({ lockMovementX: true, lockMovementY: true }) // Disable translation during rotation/scale gestures
+      }
+      // Zoom or pan gestures
+      else {
+        canvas.getObjects().forEach((o: any) => (o.objectCaching = false)) // Performance optimization
+        cancelPreviousAction(c)
+      }
+    }
+```
+
+<b>Key Takeaways</b>:
+* Disabling object caching improves performance during zoom gestures.
+* We use cancelPreviousAction to stop unintended touch inputs from affecting the canvas.
+* Locking object movement in X and Y axis to prevent unwanted translation during rotating/scaling.
+
+```js
+function cancelPreviousAction(c: Canvas) {
+  setTimeout(() => {
+      fabricateTouchUp(c)
+      const lastObject = c.getObjects().pop()
+      if (lastObject) c.remove(lastObject)
+  }, 1)
+}
+```
+
+### Rotate event
+
+We rotate the object:
+
+```js
+onRotate: (angleDifference: number, previousAngle: number) => {
+  if (!(selectedTool.value == DrawTool.Select)) return
+
+  const rotationThreshold = 0.45 // Adjust the threshold as needed
+  const obj = c.getActiveObject()
+
+  isRotating = Math.abs(angleDifference) > rotationThreshold
+  if (!isRotating) return
+
+  obj.rotate((obj.angle! + angleDifference) % 360)
+  obj.setCoords() // might not be necessary
+  c.requestRenderAll()
+}
+```
+
+<b>Key Takeaways:</b>
+* The rotationThreshold allows us to distinguish between intended rotations and accidental movements.
+
+### Zoom event
+
+```js
+onZoom: (scale: number, previousScale: number, center: IPoint) => {
+  // Object scaling
+  if (selectedTool.value == DrawTool.Select) {
+    if (isRotating) return // In case we are rotating, we do not do anything
+    if (Math.abs(scale - previousScale) < 0.005) return // Ignore small scale changes, these are probably not intentional
+
+    const scaleDiff = scale - previousScale
+    const obj = c.getActiveObject()
+
+    obj._setOriginToCenter()
+    obj.scaleX! *= 1 + scaleDiff
+    obj.scaleY! *= 1 + scaleDiff
+    obj._resetOrigin()
+    obj.setCoords()
+    c.requestRenderAll()
+  } else {
+    // Canvas zooming
+    if (Math.abs(scale - previousScale) < 0.005) return
+    handleZoom(scale, center.x, center.y, c, previousScale)
+    c.requestRenderAll()
+  }
+}
+
+
+// Handle zooming
+export const handleZoom = (scale: number, centerX: number, centerY: number, c: Canvas, previousScale: number) => {
+    let newZoom = c.getZoom() * Math.pow(scale / previousScale, 1)
+
+      // Limit the zoom level to the maximum and minimum values
+      newZoom = Math.min(newZoom, 10)
+      newZoom = Math.max(newZoom, 1)
+
+      // Get the center point of the gesture
+      const gestureCenter = new fabric.Point(centerX, centerY)
+
+      // Zoom the canvas to the new zoom level while maintaining the gesture center point
+      c.zoomToPoint(gestureCenter, newZoom)
+
+      checkCanvasBounds(c)
+}
+
+// Makes sure that we remain within the canvas area
+export const checkCanvasBounds = (c: Canvas) => {
+  const vpt = c.viewportTransform!
+  if (vpt[4] >= 0) {
+    vpt[4] = 0
+  } else if (vpt[4] < c.getWidth() - c.getWidth() * c.getZoom()) {
+    vpt[4] = c.getWidth() - c.getWidth() * c.getZoom()
+  }
+
+  if (vpt[5] >= 0) {
+    vpt[5] = 0
+  } else if (vpt[5] < c.getHeight() - c.getHeight() * c.getZoom()) {
+    vpt[5] = c.getHeight() - c.getHeight() * c.getZoom()
+  }
+  c.setViewportTransform(vpt)
+}
+```
+
+<b>Key Takeaways:</b>
+* We've set up guards to ignore minute changes in scaling, ensuring a smooth user experience.
+* Zoom limits are implemented to prevent excessive zoom-in and zoom-out.
+
+### Drag event
+
+```js
+onDrag: (dx: number, dy: number, previousDx: number, previousDy: number, center: IPoint) => {
+  if (selectedTool.value == DrawTool.Select) return
+
+  const delta = {
+    x: 2 * (dx - previousDx),
+    y: 2 * (dy - previousDy)
+  }
+  handlePan(delta, c)
+  c.requestRenderAll()
+}
+
+export const handlePan = (delta: IPoint, c: Canvas) => {
+  c.relativePan(delta)
+  checkCanvasBounds(c)
+}
+```
+
+<b>Key Takeaways:</b>
+* Drag events are disabled when the select tool is active to avoid conflicts.
+* Relative panning is used for smoother dragging of the canvas.
+
+### Gesture end event
+
+```js
+onGestureEnd: (fingers: number) => {
+  if (selectedTool.value != DrawTool.Select && fingers == 1) {
+    c.getObjects().forEach((o: any) => (o.objectCaching = true))
+  }
+
+  if (selectedTool.value == DrawTool.Select && fingers == 0) {
+      const obj = c.getActiveObject()
+      obj.set({ lockMovementX: false, lockMovementY: false })
+  }
+  c.requestRenderAll()
+}
+```
+
+<b>Key Takeaways:</b>
+* Object caching is re-enabled to optimize rendering performance after the drag gesture is completed.
+* Movement locks on objects are released, allowing further interaction.
+* The event is tailored to execute logic only when all fingers are lifted off the screen to prevent unwanted object translations caused by Fabric.js.
+
+## Conclusion
+
+And there you have it! Your roadmap to implementing intuitive mobile gestures in Fabric.js 😎.
+
+While Fabric.js is a good library, it often requires bespoke solutions for specific use-cases—just like this one. We hope this guide proves helpful.
+Feel free to share your thoughts and let us know if you'd like more content like this :)

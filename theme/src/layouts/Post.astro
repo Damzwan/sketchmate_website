@@ -5,7 +5,7 @@ import {
 } from '@littlesticks/odyssey-theme-components';
 import Layout from './Page.astro';
 import { generateTagData } from '../utils/helpers';
-import NewsletterForm from '../components/forms/NewsletterForm.astro';
+import { ClipboardCopy } from '@astro-github-elements/clipboard-copy';
 
 const {content: {title, description, pubDate, canonicalURL, featuredImage, tags} } = Astro.props;
 
@@ -49,6 +49,51 @@ const seo = {
   </Container>
 </Layout>
 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Locate the code blocks you want to target
+    const codeBlocks = document.querySelectorAll('pre code');
+
+    codeBlocks.forEach((block) => {
+      const parent = block.parentNode;
+      parent.style.position = 'relative'
+      const button = document.createElement('button');
+      button.style.right = '-10px'
+      button.style.top = '-10px'
+      button.style.opacity = '70%'
+      button.style.cursor = 'pointer'
+      button.style.position = 'absolute'
+      button.innerHTML = 'Copy';
+
+      button.addEventListener('click', () => {
+        navigator.clipboard.writeText(block.textContent)
+            .then(() => {
+              // Change the button text to "Copied!"
+              button.innerHTML = 'Copied!';
+
+              // Reset the button text after 1.5 seconds
+              setTimeout(() => {
+                button.innerHTML = 'Copy';
+              }, 1000);
+            })
+            .catch(() => {
+              button.innerHTML = 'Failed';
+
+              // Reset the button text after 1.5 seconds
+              setTimeout(() => {
+                button.innerHTML = 'Copy';
+              }, 1000);
+            });
+      });
+
+      // Append the button to each code block
+      parent.appendChild(button);
+    });
+  });
+
+
+</script>
+
 <style>
   #article {
     padding-bottom: 3rem;
@@ -77,6 +122,7 @@ const seo = {
   .post-layout__img {
     margin: 0 auto 1rem auto;
     border-radius: var(--theme-shape-radius);
+    max-height: 300px;
   }
   .post-layout__date {
     margin-bottom: 1rem;
