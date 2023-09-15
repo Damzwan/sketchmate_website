@@ -15,6 +15,11 @@ export const footerSocials = [
         icon: "mdi:linkedin",
     },
     {
+        name: 'Instaram',
+        url: 'https://www.instagram.com/sketchmate.ninja/',
+        icon: "mdi:instagram",
+    },
+    {
         name: 'mail',
         url: 'mailto:contact@sketchmate.ninja',
         icon: "mdi:email",
