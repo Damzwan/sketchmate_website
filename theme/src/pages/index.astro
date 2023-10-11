@@ -44,6 +44,8 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
                     src="/assets/images/landing/landing_1.webp"
                     alt="SketchMate 1"
                     style="object-fit: contain;height: auto; margin: auto; width:60%"
+                    class="responsive-img"
+
             />
         </picture>
     </TextAndImageHero>
@@ -57,33 +59,38 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
     <div style="overflow-x: hidden">
         <ThreeColumnTextSection>
             <div slot="column-1-body" data-aos="fade-left" data-aos-anchor-placement="top-center">
-                <h3>Connect with a friend</h3>
+                <h2>Connect with a friend</h2>
                 <picture slot="image-container" style="display: flex; justify-content: center;">
                     <img
                             src="/assets/images/landing/landing_2.webp"
                             alt="SketchMate 2"
-                            style="object-fit: contain; width: 60%; height: auto; margin: auto;"
+                            style="object-fit: contain; width: 70%; height: auto; margin: auto;"
+                            class="responsive-img"
                     />
                 </picture>
 
             </div>top
             <div slot="column-2-body" data-aos="fade-up" data-aos-anchor-placement="top-center">
-                <h3>Send sketches</h3>
+                <h2>Send sketches</h2>
                 <picture slot="image-container" style="display: flex; justify-content: center;">
                     <img
                             src="/assets/images/landing/landing_3.webp"
                             alt="SketchMate 3"
-                            style="object-fit: contain; width: 60%; height: auto; margin: auto;"
+                            style="object-fit: contain; width: 70%; height: auto; margin: auto;"
+                            class="responsive-img"
+
                     />
                 </picture>
             </div>
             <div slot="column-3-body" data-aos="fade-right" data-aos-anchor-placement="top-center">
-                <h3>Rediscover your art</h3>
+                <h2>Rediscover your art</h2>
                 <picture slot="image-container" style="display: flex; justify-content: center;">
                     <img
                             src="/assets/images/landing/landing_4.webp"
                             alt="SketchMate 4"
-                            style="object-fit: contain; width: 60%; height: auto; margin: auto;"
+                            style="object-fit: contain; width: 70%; height: auto; margin: auto;"
+                            class="responsive-img"
+
                     />
                 </picture>
             </div>
@@ -92,23 +99,23 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
 
     <StickyTextImageSection>
         <div slot="text-container">
-            <h2>Features</h2>
-            <h3>Start sketching immediately</h3>
+            <h1>Features</h1>
+            <h2>Start sketching immediately</h2>
             <p>
                 Download SketchMate and start sketching right away. No account needed, no strings attached. Just pure
                 creativity from the first moment.
             </p>
-            <h3>Tools to express yourself</h3>
+            <h2>Tools to express yourself</h2>
             <p>
                 Choose from various brushes, shapes, and stickers to bring your ideas to life. Incorporate text, use
                 emblems, or add images. Save your favorite characters for quick access.
             </p>
-            <h3>Minimalist design</h3>
+            <h2>Minimalist design</h2>
             <p>
                 SketchMate sports a clean, intuitive design that keeps the focus on your creativity. Your sketches are
                 organized in a simple gallery, ready to be revisited and shared.
             </p>
-            <h3>Free and Open Source</h3>
+            <h2>Free and Open Source</h2>
             <p>
                 SketchMate is entirely free with no ads and Open Source. Express yourself, share your creativity, and stay connected
                 with your friends without any barriers.
@@ -120,7 +127,7 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
                     class="responsive-img"
                     src="/assets/images/landing/landing_5.webp"
                     alt="SketchMate 5"
-                    style="object-fit: contain; height: auto; margin: auto; width:50%"
+                    style="object-fit: contain; height: auto; margin: auto; width:65%"
             />
         </picture>
 
@@ -139,7 +146,7 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
                     class="responsive-img"
                     src="/assets/images/landing/landing_6.webp"
                     alt="SketchMate 6"
-                    style="object-fit: contain; height: auto; margin: auto; width:40%"
+                    style="object-fit: contain; height: auto; margin: auto; width:65%"
             />
         </picture>
     </TextAndImageHero>
@@ -162,7 +169,7 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
 <style>
     @media only screen and (max-width: 800px) {
         .responsive-img {
-            width: 70% !important;
+            width: 80% !important;
         }
 
     }

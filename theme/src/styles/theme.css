@@ -32,11 +32,7 @@
 
 
     /* Theme Fonts */
-    --theme-font-family-serif: 'Roboto Serif', Georgia, Cambria, 'Times New Roman',
-    Times, serif;
-    --theme-font-family-sans: 'Lato', -apple-system, BlinkMacSystemFont,
-    sans-serif;
-
+    --theme-font-family-serif: 'Cabin Sketch'
 
 }
 
