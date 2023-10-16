@@ -24,6 +24,12 @@ export const footerSocials = [
         url: 'mailto:contact@sketchmate.ninja',
         icon: "mdi:email",
     },
+    {
+        name: 'youtube',
+        url: 'https://www.youtube.com/watch?v=T3Y_EneDAPY',
+        icon: "mdi:youtube",
+    },
+
 ]
 
 export const footerLists = [

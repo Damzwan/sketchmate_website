@@ -16,6 +16,15 @@ import { nav } from '../config/nav.js';
 const { seo } = Astro.props as Props;
 ---
 
+<script>
+	import {createStartUrl} from '../config/helper.js';
+
+	const links = document.querySelectorAll('a[href="https://app.sketchmate.ninja"]');
+	links.forEach(link => {
+		link.setAttribute('href', createStartUrl())
+	})
+</script>
+
 <Layout seo={seo}>
 	<slot name="announcement-bar" slot="announcement-bar" />
 	<Header rightMenu navData={nav} slot="header">
