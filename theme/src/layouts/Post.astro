@@ -7,7 +7,7 @@ import Layout from './Page.astro';
 import { generateTagData } from '../utils/helpers';
 import { ClipboardCopy } from '@astro-github-elements/clipboard-copy';
 
-const {content: {title, description, pubDate, canonicalURL, featuredImage, tags} } = Astro.props;
+const {content: {title, description, pubDate, canonicalURL, featuredImage, tags, attribution} } = Astro.props;
 
 let allTagsData = [];
 
@@ -38,6 +38,7 @@ const seo = {
     <p class="post-layout__date">
       <time><em>{pubDate}</em></time>
     </p>
+    <a href={attribution}>Original image</a>
     {featuredImage && <img class="post-layout__img" src={featuredImage} alt={title} />}
   </div>
   <Container narrow>

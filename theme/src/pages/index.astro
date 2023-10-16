@@ -28,27 +28,6 @@ const posts = await Astro.glob('./blog/posts/*.mdx').then(posts => sortPosts(pos
     links.forEach(link => {
         link.setAttribute('href', createStartUrl())
     })
-
-    const div = document.querySelector('.footer-copyright__container');
-
-    // Create the anchor element
-    const anchor = document.createElement('a');
-    anchor.href = 'https://play.google.com/store/apps/details?id=ninja.sketchmate.app&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1';
-    anchor.style.width = '200px'
-    anchor.style.marginTop = '-50px'
-    anchor.style.marginLeft = '-20px'
-
-    // Create the image element
-    const img = document.createElement('img');
-    img.alt = 'Get it on Google Play';
-    img.src = 'https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png';
-    img.width = 200
-
-    // Append the image to the anchor
-    anchor.appendChild(img);
-
-    // Append the anchor to the div
-    div.prepend(anchor);
 </script>
 
 <Layout seo={seo}>
